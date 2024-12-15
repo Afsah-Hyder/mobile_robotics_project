@@ -423,7 +423,7 @@
     <max_steering_angle>7.85</max_steering_angle>
   
     <!-- Max absolute linear speed in m/s -->
-    <max_speed>20</max_speed>
+    <max_speed>200</max_speed>
   
     <!-- PID tuning -->
     <left_steering_pid_gain>1500 0 1</left_steering_pid_gain>
@@ -462,6 +462,17 @@
     <joint_name>steering_wheel_joint</joint_name>
     <joint_name>front_steering_wheel_joint</joint_name>
   </plugin>   
+  
+<plugin name="basic_mobile_bot_ground_truth" filename="libgazebo_ros_p3d.so">
+  <ros>
+    <namespace>/basic_mobile_bot</namespace>
+    <remapping>~/pose:=ground_truth_pose</remapping>
+  </ros>
+  <robotNamespace>/basic_mobile_bot</robotNamespace>
+  <frameName>base_footprint</frameName>
+  <body_name>base_link</body_name>
+</plugin>
+
   
   </model>
 </sdf>
