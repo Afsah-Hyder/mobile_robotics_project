@@ -2,10 +2,12 @@
 Welcome to the final project repository for the **Mobile Robotics (EE/CEE 468)** course offered at **Habib University** during Fall 2024. This project was developed by **Afsah Hyder**, **Ailiya Fatima**, **Ali Nisar**, and **Shaheer Abbas**.  
 
 The goal of this project was to develop a mobile robotics system to make a **tow truck autonomous**. Specifically, the project focuses on the following key objectives:  
+
 - Adding **multiple trailers** to a tricycle model robot.  
 - Performing **mapping in an industrial environment** using SLAM techniques.  
 - Developing a robot model compatible with ROS2 **Nav2 resources** such as **Extended Kalman Filter (EKF)** and **Adaptive Monte Carlo Localization (AMCL)**.  
 - Analyzing and fine-tuning the performance of **EKF** and **AMCL** by evaluating their parameters.  
+
 
 This repository is structured as a **ROS2 workspace** and contains all the code, configurations, and models required to replicate the results. Please refer to the **project report** for a detailed explanation of the methodology, system architecture, and results. This README provides a focused overview of the repository structure and instructions to get started.
 
@@ -17,6 +19,7 @@ The main work is located in the `src` subfolder of the workspace. Other folders 
 
 ### 1. `gazebo_ros_ackermann_drive_debug`  
 This package utilizes a **Gazebo plugin** to simulate a robot with **Ackermann steering**. It performs the following tasks:  
+
 - Sends **control commands** to the robot.  
 - Publishes **odometry data** for the simulated robot.  
 - Debugging simulation issues related to Ackermann steering and Gazebo integration.  
@@ -139,5 +142,3 @@ We plan to expand this repository to include:
 - Further details on the **IMC world**.  
 - Advanced dynamics for multi-trailer systems.  
 - Additional experiments with SLAM and localization techniques.  
-
- 
