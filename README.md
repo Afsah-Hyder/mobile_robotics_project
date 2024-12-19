@@ -2,10 +2,12 @@
 Welcome to the final project repository for the **Mobile Robotics (EE/CEE 468)** course offered at **Habib University** during Fall 2024. This project was developed by **Afsah Hyder**, **Ailiya Fatima**, **Ali Nisar**, and **Shaheer Abbas**.  
 
 The goal of this project was to develop a mobile robotics system to make a **tow truck autonomous**. Specifically, the project focuses on the following key objectives:  
-* Adding **multiple trailers** to a tricycle model robot.  
-* Performing **mapping in an industrial environment** using SLAM techniques.  
-* Developing a robot model compatible with ROS2 **Nav2 resources** such as **Extended Kalman Filter (EKF)** and **Adaptive Monte Carlo Localization (AMCL)**.  
-* Analyzing and fine-tuning the performance of **EKF** and **AMCL** by evaluating their parameters.  
+
+- Adding **multiple trailers** to a tricycle model robot.  
+- Performing **mapping in an industrial environment** using SLAM techniques.  
+- Developing a robot model compatible with ROS2 **Nav2 resources** such as **Extended Kalman Filter (EKF)** and **Adaptive Monte Carlo Localization (AMCL)**.  
+- Analyzing and fine-tuning the performance of **EKF** and **AMCL** by evaluating their parameters.  
+
 
 This repository is structured as a **ROS2 workspace** and contains all the code, configurations, and models required to replicate the results. Please refer to the **project report** for a detailed explanation of the methodology, system architecture, and results. This README provides a focused overview of the repository structure and instructions to get started.
 
@@ -17,9 +19,10 @@ The main work is located in the `src` subfolder of the workspace. Other folders 
 
 ### 1. `gazebo_ros_ackermann_drive_debug`  
 This package utilizes a **Gazebo plugin** to simulate a robot with **Ackermann steering**. It performs the following tasks:  
-* Sends **control commands** to the robot.  
-* Publishes **odometry data** for the simulated robot.  
-* Debugging simulation issues related to Ackermann steering and Gazebo integration.  
+
+- Sends **control commands** to the robot.  
+- Publishes **odometry data** for the simulated robot.  
+- Debugging simulation issues related to Ackermann steering and Gazebo integration.  
 
 ---
 
@@ -27,31 +30,31 @@ This package utilizes a **Gazebo plugin** to simulate a robot with **Ackermann s
 This package focuses on **parameter tuning** and testing of **AMCL** and **EKF** algorithms.  
 
 #### Key Components:  
-* **`scripts`**:  
+- **`scripts`**:  
   Contains Python scripts used to record real and estimated data, and to plot the errors between the two.  
   - **EKF Script**: Subscribes to EKF-specific topics for estimated data.  
   - **AMCL Script**: Subscribes to AMCL-specific topics for estimated data.  
 
-* **`models`**:  
+- **`models`**:  
   Contains robot definitions and descriptions in the form of URDF and SDF files.  
   - **`basic_mobile_bot_description`**: Includes meshes, SDF files, and URDF descriptions. The **`model.sdf`** file is used to simulate the robot in Gazebo.  
 
-* **`worlds`**:  
+- **`worlds`**:  
   Contains simulation worlds for Gazebo.  
   - **`smalltown.world`**: Used for **AMCL** and **EKF** simulations.  
   - **`imc.world`**: Represents an industrial environment (to be uploaded).  
 
-* **`config`**:  
+- **`config`**:  
   Contains the YAML configuration file for the **EKF** algorithm. This file was modified to analyze the impact of parameter changes on EKF performance.  
 
-* **`maps`**:  
+- **`maps`**:  
   Contains the maps used for **AMCL**, stored as YAML and PGM files.  
   - **`my_map.yaml`**: An alternative map used in earlier experiments.  
 
-* **`params`**:  
+- **`params`**:  
   Contains the `nav2_params.yaml` file for **AMCL** parameter tuning.  
 
-* **`launch`**:  
+- **`launch`**:  
   Contains the launch files to initialize Gazebo, RViz, and all required nodes. The main file used for this project is:  
   - **`v5.launch.py`**  
 
@@ -61,13 +64,13 @@ This package focuses on **parameter tuning** and testing of **AMCL** and **EKF**
 This package represents the **differential drive tow truck robot towing two trailers**, modeled after IMC grill doleys.  
 
 #### Key Components:  
-* **`description`**:  
+- **`description`**:  
   Contains the URDF descriptions for the robot.  
   - **`robot.urdf.xacro`**: Calls the core robot description and control files.  
   - **`robot_core.xacro`**: Defines the main robot's structure and properties.  
   - **`gazebo_control.xacro`**: Provides control logic for `teleop_twist_keyboard`.  
 
-* **`launch`**:  
+- **`launch`**:  
   - **`launch_sim.launch.py`**: Launches the robot in an empty Gazebo world. Use `teleop_twist_keyboard` in another terminal to manually control the tow truck.
 
 ---
@@ -76,10 +79,10 @@ This package represents the **differential drive tow truck robot towing two trai
 This package builds on the `basic_mobile_robot` package to include **two trailers** connected to the robot using **hitch joints**.  
 
 #### Key Components:  
-* **`basic_mobile_bot_description`**:  
+- **`basic_mobile_bot_description`**:  
   Contains the updated `model.sdf` file to include two trailers attached to the robot. This allows simulation of the dynamics of a multi-trailer system in Gazebo.  
 
-* **Usage**:  
+- **Usage**:  
   To differentiate it from the EKF and AMCL work, this package was renamed from `basic_mobile_robot`. The rest of the package structure is similar to `basic_mobile_robot`.
 
 ---
@@ -90,20 +93,20 @@ To successfully run the packages in this repository, follow these steps:
 
 ### 1. Prerequisites  
 Ensure you have the following installed:  
-* **ROS2 Humble**  
-* **Gazebo**  
-* Required dependencies for SLAM, Nav2, and AMCL/EKF.  
+- **ROS2 Humble**  
+- **Gazebo**  
+- Required dependencies for SLAM, Nav2, and AMCL/EKF.  
 
 ### 2. Cloning the Repository  
 ```bash
-git clone <link of this repo> ~/autonomous_tow_truck
+git clone <link of this git repo> ~/autonomous_tow_truck
 cd ~/autonomous_tow_truck
 colcon build
 ```
 
 ### 3. Running the Packages  
 
-* **`basic_mobile_robot`**:  
+- **`basic_mobile_robot`**:  
   Wrap the package in the following folder structure:  
   ```  
   ~/autonomous_tow_truck/src/basic_mobile_robot  
@@ -113,7 +116,7 @@ colcon build
   ros2 launch basic_mobile_robot v5.launch.py
   ```  
 
-* **`diff_drive_robot`**:  
+- **`diff_drive_robot`**:  
   Wrap the package in the following folder structure:  
   ```  
   ~/Mobile_Robotics/dev_ws/src/diff_drive_robot  
@@ -123,21 +126,19 @@ colcon build
   ros2 launch diff_drive_robot launch_sim.launch.py
   ```  
 
-* **`basic_mobile_robot-ROBOT-TRAILER-SYS`**:  
+- **`basic_mobile_robot-ROBOT-TRAILER-SYS`**:  
   Rename this package to `basic_mobile_robot`, and follow the same steps as the original `basic_mobile_robot` package.
 
 ---
 
 ## Notes  
-* Make sure to edit the `nav2_params.yaml` and EKF YAML configuration files to test different parameter values for **AMCL** and **EKF**.  
-* The project report contains detailed results, parameter analysis, and system architecture.  
+- Make sure to edit the `nav2_params.yaml` and EKF YAML configuration files to test different parameter values for **AMCL** and **EKF**.  
+- The project report contains detailed results, parameter analysis, and system architecture.  
 
 ---
 
 ## Future Work  
 We plan to expand this repository to include:  
-* Further details on the **IMC world**.  
-* Advanced dynamics for multi-trailer systems.  
-* Additional experiments with SLAM and localization techniques.  
- 
-
+- Further details on the **IMC world**.  
+- Advanced dynamics for multi-trailer systems.  
+- Additional experiments with SLAM and localization techniques.  
